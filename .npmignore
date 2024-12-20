@@ -1,0 +1,21 @@
+# Exclude everything by default
+*
+
+# Include the dist folder
+!dist/
+
+# Include specific root files
+!README.md
+!LICENSE
+!package.json
+
+# Exclude node_modules
+node_modules/
+
+# Exclude other config files and source files
+src/
+tsconfig.json
+tsconfig.cjs.json
+tsconfig.esm.json
+obfuscator-config.json
+npm-debug.log
