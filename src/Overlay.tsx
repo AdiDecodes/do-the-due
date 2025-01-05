@@ -2,24 +2,21 @@ import React, {
 	useState,
 	useEffect,
 } from 'react';
-import '../styles/tailwind.css';
 import {
 	OverlayState,
 	subscribeToOverlayState,
 } from './useOverlay';
 
-import Img1 from '../assets/Img-1.svg';
-import Img2 from '../assets/Img-2.jpg';
-import Img3 from '../assets/Bg-3.gif';
-import Img4 from '../assets/Img-4.svg';
 import { TbAlertSquareRounded } from 'react-icons/tb';
 import {
 	motion,
 	AnimatePresence,
 } from 'motion/react';
 import { IoCloseCircleSharp } from 'react-icons/io5';
+import { ASSETS } from './constant';
+import './index.css';
 
-const Overlay: React.FC = () => {
+export const Overlay: React.FC = () => {
 	const [overlayContent, setOverlayContent] =
 		useState<OverlayState | null>(null);
 
@@ -50,17 +47,11 @@ const Overlay: React.FC = () => {
 	};
 
 	const getBgImage = (index: number) => {
-		if (index === 1) {
-			return Img1;
-		} else if (index === 2) {
-			return Img2;
-		} else if (index === 3) {
-			return Img3;
-		} else if (index === 4) {
-			return Img4;
-		} else {
-			return Img1;
-		}
+		if (index === 1) return ASSETS.Img1;
+		if (index === 2) return ASSETS.Img2;
+		if (index === 3) return ASSETS.Img3;
+		if (index === 4) return ASSETS.Img4;
+		return ASSETS.Img1;
 	};
 
 	const RenderUI = () => {
@@ -120,19 +111,25 @@ const Overlay: React.FC = () => {
 							{overlayContent.description}
 						</p>
 						{overlayContent.contact && (
-							<div className='w-full flex flex-col items-start justify-start my-2'>
-								<p className='text-lg font-semibold text-white mt-3'>
+							<div className='w-full flex flex-col items-start justify-start my-3'>
+								<p className='text-base font-semibold text-white'>
 									Contact Info:
 								</p>
-								<p className='text-sm select-text'>
-									Name: {overlayContent.contact.name}
-								</p>
-								<p className='text-sm select-text'>
-									Email: {overlayContent.contact.email}
-								</p>
-								<p className='text-sm select-text'>
-									Phone: {overlayContent.contact.phone}
-								</p>
+								{overlayContent.contact.name && (
+									<p className='text-sm select-text text-white'>
+										Name: {overlayContent.contact.name}
+									</p>
+								)}
+								{overlayContent.contact.email && (
+									<p className='text-sm select-text text-white'>
+										Email: {overlayContent.contact.email}
+									</p>
+								)}
+								{overlayContent.contact.phone && (
+									<p className='text-sm select-text text-white'>
+										Phone: {overlayContent.contact.phone}
+									</p>
+								)}
 							</div>
 						)}
 						{overlayContent.callToAction && (
@@ -230,15 +227,21 @@ const Overlay: React.FC = () => {
 										<p className='text-base font-semibold text-white'>
 											Contact Info:
 										</p>
-										<p className='text-sm select-text'>
-											Name: {overlayContent.contact.name}
-										</p>
-										<p className='text-sm select-text'>
-											Email: {overlayContent.contact.email}
-										</p>
-										<p className='text-sm select-text'>
-											Phone: {overlayContent.contact.phone}
-										</p>
+										{overlayContent.contact.name && (
+											<p className='text-sm select-text text-white'>
+												Name: {overlayContent.contact.name}
+											</p>
+										)}
+										{overlayContent.contact.email && (
+											<p className='text-sm select-text text-white'>
+												Email: {overlayContent.contact.email}
+											</p>
+										)}
+										{overlayContent.contact.phone && (
+											<p className='text-sm select-text text-white'>
+												Phone: {overlayContent.contact.phone}
+											</p>
+										)}
 									</div>
 								)}
 								{overlayContent.callToAction && (
@@ -265,4 +268,3 @@ const Overlay: React.FC = () => {
 	return <RenderUI />;
 };
 
-export default Overlay;

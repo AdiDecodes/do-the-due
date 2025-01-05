@@ -3,21 +3,24 @@
 		"typeRoots": [
 			"./node_modules/@types",
 			"./custom.d.ts"
-		], // Where to look for type definitions
-		"noEmitOnError": false,
-		"outDir": "dist", // Where to output compiled files
-		"declaration": true, // Generate type declaration files
-		"declarationDir": "dist/types", // Output directory for declarations
-		"module": "ESNext", // Module system for npm packages
-		"target": "ES6", // JavaScript version
-		"moduleResolution": "Node", // Resolve modules like Node.js
-		"strict": true, // Enable all strict type-checking options
-		"esModuleInterop": true, // Enable interop between CommonJS and ES modules
-		"skipLibCheck": true, // Skip type checking for declaration files
-		"sourceMap": true, // Include sourcemaps for debugging
-		"allowSyntheticDefaultImports": true, // Allow default imports from modules without default exports
-		"jsx": "react" // Enable JSX support
+		],
+		"target": "ES6",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"jsx": "react",
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["src/*"]
+		}
 	},
-	"include": ["src/**/*", "custom.d.ts"], // Include only your source files
-	"exclude": ["node_modules", "dist"] // Exclude output and dependencies
+	"include": ["src", "custom.d.ts"],
+	"exclude": ["node_modules", "dist"]
 }

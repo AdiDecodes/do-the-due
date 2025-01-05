@@ -28,9 +28,9 @@ View the working demo for this package
 Install dothedue with npm / yarn / bun
 
 ```bash
-  npm install dothedue //For npm
-  yarn add dothedue // For Yarn
-  bun add dothedue // For Bun
+npm install dothedue //For npm
+yarn add dothedue // For Yarn
+bun add dothedue // For Bun
 ```
 
 ## 3. Import
@@ -38,9 +38,12 @@ Install dothedue with npm / yarn / bun
 Use ES6 Module Import to import the package components
 
 ```bash
-import { useOverlay } from 'dothedue';
-import { Overlay } from 'dothedue';
+import { useOverlay, Overlay } from 'dothedue';
+import 'dothedue/dist/index.css' // Explicitly Import CSS file
 ```
+
+For using style, you manually need to import the css file using  
+`import 'dothedue/dist/index.css'`
 
 ## 4. Component Breakdown
 

@@ -1,49 +1,47 @@
 {
 	"name": "dothedue",
-	"version": "1.0.3",
-	"main": "dist/cjs/index.js",
-	"module": "dist/esm/index.js",
-	"types": "dist/types/index.d.ts",
+	"version": "1.0.12",
+	"main": "dist/index.mjs",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.mts",
+	"style": "dist/index.css",
 	"scripts": {
-		"build:css": "npx tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles/tailwind.css --minify",
-		"build": "npm run copy-assets && npm run build:css && npm run build:all && npm run obfuscate",
-		"build:all": "npm run build:cjs && npm run build:esm",
-		"build:cjs": "tsc --project tsconfig.cjs.json",
-		"build:esm": "tsc --project tsconfig.esm.json",
-		"copy-assets": "copyfiles -u 1 src/assets/**/* src/styles/**/* dist",
-		"obfuscate": "javascript-obfuscator dist --output dist --config obfuscator-config.json",
-		"dev": "nodemon --watch src --ext ts,tsx --exec \"npm run build\"",
-		"prepublishOnly": "copyfiles -f package.publish.json dist/package.json"
+		"build": "tsup && npm run rename:css",
+		"rename:css": "shx mv ./dist/index.css ./dist/dothedue.css",
+		"watch": "tsup --watch"
 	},
 	"files": [
-		"dist",
-		"README.md",
-		"LICENSE"
+		"dist/**/*"
 	],
 	"keywords": [
 		"dothedue",
 		"Aditya Singh"
 	],
 	"author": "Aditya Singh",
-	"license": "ISC",
+	"license": "MIT",
 	"description": "",
+	"peerDependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
 	"dependencies": {
-		"@types/react": "^18.3.12",
-		"@types/react-dom": "^18.3.1",
 		"autoprefixer": "^10.4.20",
 		"motion": "^11.15.0",
-		"postcss": "^8.4.49",
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
-		"react-icons": "^5.4.0",
-		"tailwind-scrollbar": "^3.1.0",
-		"tailwindcss": "^3.4.15",
-		"typescript": "^5.7.2"
+		"react-icons": "^5.4.0"
 	},
 	"devDependencies": {
 		"@types/node": "^22.10.1",
-		"copyfiles": "^2.4.1",
-		"javascript-obfuscator": "^4.1.1",
-		"nodemon": "^3.1.9"
+		"@types/react": "^18.2.0",
+		"@types/react-dom": "^18.3.1",
+		"nodemon": "^3.1.9",
+		"postcss": "^8.4.49",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"shx": "^0.3.4",
+		"tailwind-scrollbar": "^3.1.0",
+		"tailwindcss": "^3.4.17",
+		"tslib": "^2.6.3",
+		"tsup": "^8.3.5",
+		"typescript": "^5.7.2"
 	}
 }

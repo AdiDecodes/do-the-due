@@ -1,13 +1,11 @@
 # Exclude everything by default
 *
 
-# Include the dist folder
-!dist/
-
 # Include specific root files
 !README.md
 !LICENSE
 !package.json
+!dist/*
 
 # Exclude node_modules
 node_modules/
